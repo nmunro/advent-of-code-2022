@@ -1,6 +1,5 @@
 (defpackage advent-of-code-2022/day-2
-  (:use :cl)
-  (:export #:find-top-calories))
+  (:use :cl))
 
 (in-package advent-of-code-2022/day-2)
 
