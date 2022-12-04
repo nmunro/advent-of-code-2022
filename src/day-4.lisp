@@ -32,7 +32,9 @@
     (length (loop :for range :in ranges :if (search (cadr range) (car range)) :collect t))))
 
 (defun part-2 (path)
-  (probe-file path))
+  (let* ((data (loop :for pair :in (get-data path) :collect (apply #'split-sections (split-pairs pair))))
+         (ranges (order-ranges (make-ranges data))))
+    (length (loop :for range :in ranges :if (intersection (cadr range) (car range)) :collect t))))
 
 ;; if one if fully contained in the other, not if they share some work
 (part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-4.txt")
