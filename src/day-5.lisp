@@ -58,7 +58,7 @@
          (tmp '()))
     (dotimes (x (parse-integer (car action)))
       (push (pop (nth from stacks)) tmp))
-    (setf (nth to stacks) (append tmp (nth to stacks)))))
+    (setf (nth to stacks) (append (reverse tmp) (nth to stacks)))))
 
 (defun part-1 (path)
   (let* ((data (split-data path))
@@ -80,6 +80,3 @@
 ;; if one if fully contained in the other, not if they share some work
 (part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-5.txt")
 (part-2 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-5.txt")
-
-(let ((l1 '((1 2 3) (4 5 6) (7 8 9))))
-  ( l1 0 1))
