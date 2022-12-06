@@ -17,18 +17,12 @@
     (= (length set) num)))
 
 (defun part-1 (path &key (num 4))
-  (let* ((data (car (get-data path)))
-         (segments (loop :for x :from 0 :to (length data) :collect (subseq data x (min (length data) (+ num x)))))
-         (count 0))
-    (dolist (segment segments)
+  (let ((data (car (get-data path)))
+        (count 0))
+    (dolist (segment (loop :for x :from 0 :to (length data) :collect (subseq data x (min (length data) (+ num x)))))
       (when (is-start-marker-p segment :num num)
         (return-from part-1 (+ num count)))
       (incf count))))
-
-(part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-6-example-1.txt")
-(part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-6-example-2.txt")
-(part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-6-example-3.txt")
-(part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-6-example-4.txt")
 
 (part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-6.txt")
 (part-1 #p"~/quicklisp/local-projects/advent-of-code-2022/data/data-day-6.txt" :num 14)
